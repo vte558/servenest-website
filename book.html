@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Service - ServeNest</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Serve<span>Nest</span></div>
+                <div class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="book.html" class="active" style="color: var(--primary-color);">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero"
+        style="min-height: 40vh; height: 300px; background: linear-gradient(rgba(0,128,128,0.8), rgba(0,128,128,0.8)), url('assets/images/servenest_hero_banner.png'); background-size: cover; background-position: center;">
+        <div class="hero-content" style="background: transparent; box-shadow: none; color: white;">
+            <h1 style="color: white;">Book a Service</h1>
+            <p style="color: rgba(255,255,255,0.9);">Fill the details below and we will connect on WhatsApp.</p>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="form-container">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" required placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" required placeholder="Your City">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Type</label>
+                        <select id="service" required>
+                            <option value="">Select a Service</option>
+                            <option value="Home Cleaning">Home Cleaning</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="AC Repair">AC Repair</option>
+                            <option value="Painting">Painting</option>
+                            <option value="Pest Control">Pest Control</option>
+                            <option value="Salon at Home">Salon at Home</option>
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message / Issue Description</label>
+                        <textarea id="message" placeholder="Describe the issue or requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-accent" style="width: 100%;">Book via WhatsApp</button>
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        <i class="fab fa-whatsapp" style="color: #25D366;"></i> You will be redirected to WhatsApp to
+                        confirm.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ServeNest</h3>
+                    <p>Your trusted partner for home services.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="book.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +91 9032932039</li>
+                        <li><i class="fas fa-envelope"></i> solution@gamil.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year"></span> ServeNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const city = document.getElementById('city').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const message = document.getElementById('message').value;
+
+            const whatsappMessage = `*New Service Booking Request*%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*City:* ${city}%0A*Service:* ${service}%0A*Date:* ${date}%0A*Message:* ${message}`;
+
+            const whatsappNumber = '919032932039'; // Replace with actual number
+            const url = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+
+</html>
